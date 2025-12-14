@@ -1,0 +1,257 @@
+Perfect — I’ll give you the EASIEST and MOST PROFESSIONAL project for your viva:
+
+⭐ Website Performance Monitoring Dashboard (React + Node.js)
+
+This project is super impressive and VERY easy to build.
+
+I will guide you with:
+
+✔ setup
+✔ folder structure
+✔ backend code
+✔ frontend code
+✔ how to run it
+✔ screenshots (UI description)
+✔ viva explanation
+✔ project report + PPT (if you want)
+
+Let's start the setup.
+
+⭐ STEP 1 — Create Your Project Folder
+
+Make a new folder on your computer:
+
+performance-monitor-tool/
+
+
+Inside it, you will create:
+
+backend/
+frontend/
+
+⭐ STEP 2 — Setup Backend (Node.js + Express)
+1️⃣ Open CMD inside the backend folder
+
+Run:
+
+npm init -y
+npm install express axios cors
+
+2️⃣ Create a file:
+backend/index.js
+
+3️⃣ Paste this code:
+const express = require("express");
+const axios = require("axios");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.post("/check", async (req, res) => {
+  const { url } = req.body;
+
+  const start = Date.now();
+
+  try {
+    const response = await axios.get(url);
+    const timeTaken = Date.now() - start;
+
+    res.json({
+      status: "Online",
+      statusCode: response.status,
+      loadTime: timeTaken + " ms",
+      contentLength: response.headers["content-length"] || "Unknown",
+    });
+
+  } catch (error) {
+    res.json({
+      status: "Offline",
+      error: error.message,
+    });
+  }
+});
+
+app.listen(5000, () => console.log("Backend running on port 5000"));
+
+4️⃣ Start backend:
+node index.js
+
+
+Backend is DONE. ✔️
+It checks website speed, response, and whether it is online/offline.
+
+⭐ STEP 3 — Setup Frontend (React Vite)
+1️⃣ Go to the frontend folder
+
+Open CMD:
+
+npm create vite@latest
+
+
+Name your project:
+
+frontend
+
+
+Choose:
+
+React
+JavaScript
+
+
+Then:
+
+cd frontend
+npm install axios
+
+⭐ STEP 4 — Build the UI
+
+Open:
+
+frontend/src/App.jsx
+
+
+Delete everything and paste:
+
+import { useState } from "react";
+import axios from "axios";
+
+function App() {
+  const [url, setUrl] = useState("");
+  const [result, setResult] = useState(null);
+
+  const checkWebsite = async () => {
+    const res = await axios.post("http://localhost:5000/check", { url });
+    setResult(res.data);
+  };
+
+  return (
+    <div style={{ padding: "40px", fontFamily: "Arial" }}>
+      <h1>Website Performance Monitoring Tool</h1>
+
+      <input 
+        type="text"
+        placeholder="Enter website URL"
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+        style={{ padding: "10px", width: "300px" }}
+      />
+
+      <button 
+        onClick={checkWebsite}
+        style={{ padding: "10px 20px", marginLeft: "10px" }}
+      >
+        Check
+      </button>
+
+      {result && (
+        <div style={{ marginTop: "30px" }}>
+          <h2>Results:</h2>
+          <p><b>Status:</b> {result.status}</p>
+          <p><b>Status Code:</b> {result.statusCode}</p>
+          <p><b>Load Time:</b> {result.loadTime}</p>
+          <p><b>Content Length:</b> {result.contentLength}</p>
+          {result.error && <p><b>Error:</b> {result.error}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
+
+⭐ STEP 5 — Start Frontend
+npm run dev
+
+
+React app runs on:
+
+http://localhost:5173/
+
+⭐ NOW YOUR PROJECT IS READY 🎉
+
+You will see:
+
+A textbox to enter website URL
+
+A button to check performance
+
+A results box showing:
+
+✔ Status (Online/Offline)
+✔ Status Code (200, 404, etc.)
+✔ Load Time
+✔ Content Size
+
+⭐ WHAT YOU WILL SHOW IN VIVA
+✔ Entire project folder
+✔ Website interface (React UI)
+✔ Backend working
+✔ Testing report
+✔ Screenshots of running tool
+✔ How you tested response time, errors, API
+⭐ If you want, I can also prepare:
+
+✔ PPT for viva (10–12 slides)
+✔ Project Report PDF (20–40 marks format)
+✔ README file for GitHub
+✔ Better UI for frontend
+✔ Graph dashboard version
+
+❓ Do you want:
+👉 PPT
+👉 Project Report
+👉 More features
+👉 A better modern UI
+
+Tell me what you want next.
+
+i want to add the google analysis to  something like thaht 
+
+Perfect — you want to make your project even more professional by adding Google Analytics–style features such as:
+
+Website traffic stats
+
+User behavior
+
+Page load performance
+
+Real-time metrics
+
+Analytics dashboard
+
+We can absolutely add this without needing Google Ads API (so no more trouble with tokens, OAuth, etc.)
+
+I will give you TWO options — choose whichever you want:
+
+⭐ OPTION A — Add Google Analytics (GA4) Script to Your Tool
+
+Super easy:
+Your frontend will show analytics for any website where you have placed Google Analytics tracking ID.
+
+This lets you display:
+
+✔ Page Views
+✔ Sessions
+✔ Bounce Rate
+✔ Traffic Source
+✔ Device Type
+✔ Real-time users
+
+We can fetch analytics using:
+
+👉 Google Analytics Data API
+
+(much easier compared to Google Ads API)
+
+⭐ OPTION B — Build Your OWN Analytics Dashboard (no Google required)
+
+Your tool will:
+
+✔ Track website speed
+✔ Track uptime
+✔ Track response time over the day
+✔ Show history in graphs
+✔ Monitor multiple websites

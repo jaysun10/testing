@@ -91,7 +91,7 @@ app.use((req, res, next) => {
   httpServer.listen(
     {
       port,
-      host: process.env.HOST || "localhost",
+      host: "0.0.0.0",
     },
     () => {
       log(`serving on port ${port}`);

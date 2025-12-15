@@ -1,7 +1,7 @@
-const { build: esbuild } = require('esbuild');
-const { build: viteBuild } = require('vite');
-const { readFile } = require('fs/promises');
-const { rimraf } = require('rimraf');
+import { build as esbuild } from "esbuild";
+import { build as viteBuild } from "vite";
+import { readFile } from "fs/promises";
+import { rimraf } from "rimraf";
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times

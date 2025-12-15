@@ -36,6 +36,7 @@ const allowlist = [
 ];
 
 async function buildAll() {
+  console.log("starting build");
   await rimraf("dist");
 
   console.log("building client...");
@@ -49,6 +50,7 @@ async function buildAll() {
   ];
   const externals = allDeps.filter((dep) => !allowlist.includes(dep));
 
+  console.log("running esbuild...");
   await esbuild({
     entryPoints: ["server/index.ts"],
     platform: "node",
@@ -61,6 +63,7 @@ async function buildAll() {
     },
     logLevel: "info",
   });
+  console.log("esbuild done");
 }
 
 buildAll().catch((err) => {
